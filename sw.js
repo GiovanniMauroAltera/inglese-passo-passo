@@ -1,18 +1,18 @@
 /* Service worker: fa funzionare l'app anche senza internet.
    Prima prova a scaricare la versione nuova; se non c'è rete usa la copia salvata. */
 
-var NOME_CACHE = "inglese-passo-passo-1";
+var NOME_CACHE = "inglese-passo-passo-2";
 
 var FILE_DELL_APP = [
   "./",
   "./index.html",
-  "./stile.css?v=1",
-  "./app.js?v=1",
-  "./pagine.js?v=1",
-  "./lezioni/a1.js?v=1",
-  "./lezioni/a2.js?v=1",
-  "./lezioni/b1.js?v=1",
-  "./lezioni/b2.js?v=1",
+  "./stile.css?v=2",
+  "./app.js?v=2",
+  "./pagine.js?v=2",
+  "./lezioni/a1.js?v=2",
+  "./lezioni/a2.js?v=2",
+  "./lezioni/b1.js?v=2",
+  "./lezioni/b2.js?v=2",
   "./manifest.json",
   "./icone/icona-192.png",
   "./icone/icona-512.png"

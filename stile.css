@@ -1,5 +1,6 @@
 /* Inglese passo passo: un quaderno a righe.
-   Tu scrivi in blu, le correzioni arrivano in rosso come quelle dell'insegnante. */
+   Tu scrivi in blu, le correzioni arrivano in rosso come quelle dell'insegnante.
+   I colori sono sempre chiari, anche se il telefono è in modalità scura (scelta dell'utente). */
 
 :root {
   --carta: #FAFBFE;
@@ -19,25 +20,6 @@
   --font-frase: "Literata", Georgia, "Times New Roman", serif;
   --interlinea-quaderno: 2.75rem;
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --carta: #131A2A;
-    --foglio: #1A2336;
-    --carta-scura: #1E2840;
-    --riga: #2B3752;
-    --inchiostro: #E6EAF3;
-    --matita: #A2ACC1;
-    --blu: #94ADF6;
-    --su-blu: #0F1830;
-    --blu-tenue: #1F2C50;
-    --rosso: #F28D8D;
-    --rosso-tenue: #3A2029;
-    --margine: #7A3D4A;
-    --velo: rgba(0, 0, 0, 0.6);
-    color-scheme: dark;
-  }
 }
 
 * {
