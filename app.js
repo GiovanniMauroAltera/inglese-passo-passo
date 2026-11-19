@@ -52,11 +52,30 @@ function avvio() {
     window.speechSynthesis.getVoices();
   }
   if ("serviceWorker" in navigator) {
+    if (navigator.serviceWorker.controller !== null) {
+      // c'era già una versione installata: se ne arriva una nuova, ricarico la pagina
+      navigator.serviceWorker.addEventListener("controllerchange", ricaricaPerAggiornamento);
+    }
     navigator.serviceWorker.register("sw.js").catch(function () {
       // senza service worker l'app funziona lo stesso, solo non offline
     });
   }
   instrada();
+}
+
+var giaRicaricata = false;
+
+// È arrivata una versione nuova dell'app: ricarico una volta sola,
+// ma non in mezzo agli esercizi (le risposte date sono già salvate comunque)
+function ricaricaPerAggiornamento() {
+  if (giaRicaricata) {
+    return;
+  }
+  if (sessione !== null && !sessione.finita) {
+    return;
+  }
+  giaRicaricata = true;
+  location.reload();
 }
 
 function instrada() {

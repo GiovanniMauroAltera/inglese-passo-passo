@@ -1,18 +1,18 @@
 /* Service worker: fa funzionare l'app anche senza internet.
    Prima prova a scaricare la versione nuova; se non c'è rete usa la copia salvata. */
 
-var NOME_CACHE = "inglese-passo-passo-2";
+var NOME_CACHE = "inglese-passo-passo-3";
 
 var FILE_DELL_APP = [
   "./",
   "./index.html",
-  "./stile.css?v=2",
-  "./app.js?v=2",
-  "./pagine.js?v=2",
-  "./lezioni/a1.js?v=2",
-  "./lezioni/a2.js?v=2",
-  "./lezioni/b1.js?v=2",
-  "./lezioni/b2.js?v=2",
+  "./stile.css?v=3",
+  "./app.js?v=3",
+  "./pagine.js?v=3",
+  "./lezioni/a1.js?v=3",
+  "./lezioni/a2.js?v=3",
+  "./lezioni/b1.js?v=3",
+  "./lezioni/b2.js?v=3",
   "./manifest.json",
   "./icone/icona-192.png",
   "./icone/icona-512.png"
@@ -76,9 +76,11 @@ self.addEventListener("fetch", function (evento) {
     return;
   }
 
-  // i file dell'app: prima la rete (per avere sempre l'ultima versione), poi la copia
+  // i file dell'app: prima la rete (per avere sempre l'ultima versione), poi la copia.
+  // "no-cache" obbliga il browser a chiedere al sito se il file è cambiato,
+  // invece di usare per 10 minuti la copia vecchia che tiene in memoria.
   evento.respondWith(
-    fetch(richiesta).then(function (risposta) {
+    fetch(new Request(richiesta, { cache: "no-cache" })).then(function (risposta) {
       if (risposta.ok) {
         var copia = risposta.clone();
         caches.open(NOME_CACHE).then(function (cache) {
